@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      :root {
+        --text-color: light-dark(black, white);
+        --link-color: light-dark(green, deeppink);
+        --background-color: light-dark(white, black);
+      }
+      /* If the <select> element's value attribute matches, switch
+schemes */
+      :root:has(option[value="system"]:checked) {
+        color-scheme: light dark;
+      }
+
+      :root:has(option[value="light"]:checked) {
+        color-scheme: light;
+      }
+      :root:has(option[value="dark"]:checked) {
+        color-scheme: dark;
+      }
+
+      body {
+        color: var(--text-color);
+        background-color: var(--background-color);
+      }
+      a {
+        color: var(--link-color);
+      }
+
       fieldset:has(input[type="checkbox"]:checked) {
         border-color: green;
       }
     </style>
   </head>
   <body>
+    <label for="theme-select">Theme:</label>
+    <select id="theme-select" name="color-scheme">
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
     <form>
       <fieldset>
         <legend>Select Extras</legend>
