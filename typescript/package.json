@@ -1,0 +1,16 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "https://millsp.github.io/ts-toolbelt/4.2.1/#goals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ts-toolbelt": "^9.6.0"
+  }
+}
