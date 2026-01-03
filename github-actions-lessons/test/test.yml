@@ -1,0 +1,28 @@
+name: Test Project
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # First step download a code
+      - name: Get code
+        # For actions we should use [uses] instead of run
+        # After you can use all features from actions
+        # Checkout actions allowed to manipulate with your branch
+        uses: actions/checkout@v6
+        # [with] for each actions is different with some configuration
+        # with:
+        #   ...
+      # Install download node js
+      # ubuntu-latest already have a node.js
+      # But anyway we install it
+      - name: Install nodejs
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
