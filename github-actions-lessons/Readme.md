@@ -18,3 +18,5 @@
 # Github Action
 
 We can download it from github actions market place
+
+# Link for documentation https://docs.github.com/ru/actions/get-started/quickstart

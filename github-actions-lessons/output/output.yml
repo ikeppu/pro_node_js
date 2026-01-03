@@ -1,0 +1,11 @@
+name: Output Information
+
+on: workflow_dispatch
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output github context
+        # ${{github}} special symbols for get something from gitub
+        run: echo "${{ toJson(github) }}"
