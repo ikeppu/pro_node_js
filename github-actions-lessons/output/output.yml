@@ -1,11 +1,19 @@
 name: Output Information
 
-on: workflow_dispatch
+on:
+  pull_request:
+    types:
+      - opened
+  workflow_dispatch:
+  push:
+    - main
+    - "dev-*"
+    - "feat/**"
 
 jobs:
   info:
     runs-on: ubuntu-latest
     steps:
       - name: Output github context
-        # ${{github}} special symbols for get something from gitub
+        # ${{github}} special symbols for get something from github
         run: echo "${{ toJson(github) }}"
