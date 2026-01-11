@@ -23,6 +23,7 @@ terminal.on("line", (userInput) => {
   // Switch case to handle different commands based on user input
   switch (command) {
     case "exit":
+      1;
       invoker.run(new Exit());
       terminal.close();
       break;
