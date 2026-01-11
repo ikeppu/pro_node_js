@@ -1,0 +1,29 @@
+name: Reusable
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Test description
+        required: false
+        defaut: dist
+        type: string
+    outputs:
+      result:
+        description: The Output
+        value: ${{ jobs.deploy.outputs.outcome }}
+    secrets:
+      some-secret:
+        required: true
+jobs:
+  deploy:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo "${{ inputs.artifact-name }}"
+      - name: Deploy
+        run: echo "Deploying & uploading"
+      - name: Set result output
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT

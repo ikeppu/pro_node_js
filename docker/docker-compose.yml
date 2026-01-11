@@ -1,0 +1,39 @@
+services:
+  # Основной бэкенд на Node.js
+  api-gateway:
+    build: ./backend-node
+    container_name: api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - AI_SERVICE_URL=http://ai-engine:8000 # Ссылка на второй сервис
+    depends_on:
+      - ai-engine
+      - db
+
+  # AI движок на Python FastAPI
+  ai-engine:
+    build: ./ai-engine-python
+    container_name: ai-engine
+    expose:
+      - "8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY} # Берется из твоего .env файла
+
+  # База данных
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: saas_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
