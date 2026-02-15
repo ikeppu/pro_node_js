@@ -39,7 +39,7 @@ export class VideoController {
           Authorization: `Bearer ${apiToken}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     const data = await response.json();
